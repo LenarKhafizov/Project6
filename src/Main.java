@@ -11,20 +11,23 @@ public class Main {
         String text = textInp();
         Map<Character, Integer> textMap = new HashMap<>();
         textMap.put(text.charAt(0), 1);
-        for (int i = 1; i < text.length(); i++) {
+        //for (int i = 1; i < text.length(); i++) {
+        int i = 1;
+        do {
             char s = text.charAt(i);
             for (Character key:textMap.keySet()) {
                 if (s == key) {
                     int sAmount = textMap.get(s);
                     sAmount++;
                     textMap.put(s,sAmount);
-                    break;
                 }
                 else {
                     textMap.put(s, 1);
+                    break;
                 }
-           }
-        }
+            }
+            i++;
+        } while (i < text.length());
         System.out.println(textMap);
     }
 }
